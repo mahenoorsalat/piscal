@@ -27,7 +27,7 @@ const Navbar = () => {
                         <a href="/About" className="hover:text-gray-300">About Us</a>
                         <a href="/Contact" className="hover:text-gray-300">Contact</a>
                         <a href="/Search" className="hover:text-gray-300"><FiSearch /></a>
-                        <a href="#" className="bg-[#E37019] hover:bg-orange-600 py-2 px-4 rounded-full">Login / Signup</a>
+                        <a href="/SignIn" className="bg-[#E37019] hover:bg-orange-600 py-2 px-4 rounded-full">Login / Signup</a>
                       </div>
                       <div className="md:hidden">
                         <button className="text-white">☰</button>
