@@ -1,537 +1,396 @@
 "use client"
+import { useState } from 'react';
+import { Search, Filter, ChevronRight ,Facebook, Instagram, Twitter, Linkedin, Youtube, Music } from 'lucide-react';
+import { FaPinterest } from 'react-icons/fa'; // Font Awesome Pinterest icon
 
-import React from 'react';
-import Head from 'next/head';
-import Image from 'next/image';
-import { FaSearch, FaApple, FaGooglePlay, FaLinkedin, FaFacebook, FaInstagram } from 'react-icons/fa';
 
 export default function Home() {
+  const [selectedTab, setSelectedTab] = useState('FOR SALE');
+  
   return (
-    <div className="min-h-screen flex flex-col">
-      <Head>
-        <title>Piscal+ | Find Your Dream Home & Make an Impact</title>
-        <meta name="description" content="Earn rewards by walking, recycling, or helping the planet — and use them toward property savings!" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <div className="flex flex-col min-h-screen bg-white">
+  
 
+      {/* Notification banner */}
+      <div className="bg-blue-50 py-2 px-6 flex justify-center items-center relative">
+        <p className="text-sm">Complete a short survey and get a chance to win a $100 prepaid card! <a href="#" className="underline">I participate</a></p>
+        <button className="absolute right-4 top-2">×</button>
+      </div>
 
-
-      <main>
-{/* 2. Hero Section */}
-<section className="relative h-[600px]">
+{/* Hero section */}
+<section
+  className="relative h-96 bg-cover bg-center"
+  style={{ backgroundImage: "url('./HomeBg.jpg')" }}
+>
   {/* Overlay */}
-  <div className="absolute inset-0 bg-black/30 z-10"></div>
-  <div className="absolute inset-0 bg-gradient-to-r from-[#2D4939]/70 to-transparent z-10"></div>
-
-  {/* Background Image */}
-  <div className="relative h-full w-full">
-    <Image 
-      src="/bg.jpg" 
-      alt="Urban nature blend with person walking in green neighborhood" 
-      layout="fill"
-      objectFit="cover"
-      priority
-    />
-  </div>
+  <div className="absolute  bg-black bg-opacity-30"></div>
 
   {/* Content */}
-  <div className="container mx-auto absolute top-0 left-0 right-0 bottom-0 z-20 flex flex-col justify-center items-center px-6">
-    <div className="max-w-xl text-center">
-      <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-        Find Your Dream Home & Make an Impact 🌱
-      </h1>
-      <p className="text-gray-200 text-lg mb-8">
-        Earn rewards by walking, recycling, or helping the planet — and use them toward property savings!
-      </p>
-    </div>
-
-    {/* Search Form */}
-    <div className="max-w-3xl">
-      <div className="bg-white p-2 rounded-lg flex flex-wrap">
-        
-        {/* Search Input */}
-        <input 
-          type="text" 
-          placeholder="Search by city, postal code, or property type" 
-          className="flex-grow px-4 py-2 focus:outline-none rounded-l"
-        />
-
-        {/* Price Range Select */}
-        <div className="border-l border-gray-300 px-3 py-2">
-          <select className="focus:outline-none">
-            <option>Price Range</option>
-            <option>$100k - $200k</option>
-            <option>$200k - $300k</option>
-            <option>$300k+</option>
-          </select>
-        </div>
-
-        {/* Bedrooms Select */}
-        <div className="border-l border-gray-300 px-3 py-2">
-          <select className="focus:outline-none">
-            <option>Bedrooms</option>
-            <option>1+</option>
-            <option>2+</option>
-            <option>3+</option>
-            <option>4+</option>
-          </select>
-        </div>
-
-        {/* Property Type Select */}
-        <div className="border-l border-gray-300 px-3 py-2">
-          <select className="focus:outline-none">
-            <option>Type</option>
-            <option>House</option>
-            <option>Apartment</option>
-            <option>Condo</option>
-          </select>
-        </div>
-
-        {/* Search Button */}
-        <button className="bg-[#E37019] text-white px-6 py-2 rounded-r flex items-center">
-          <FaSearch className="mr-2" /> Search
-        </button>
-      </div>
-    </div>
+  <div className="relative px-6 py-12 h-full flex flex-col justify-center">
+    <h1 className="text-4xl font-bold text-white mb-4">
+      Sell well supported by our experienced team!
+    </h1>
+    <button className="bg-green-500 text-white px-6 py-3 rounded-full w-fit">
+      Discover our services
+    </button>
   </div>
 </section>
 
 
+      {/* Search section */}
+      <section className="bg-white -mt-12 mx-6 rounded-lg shadow-md p-4">
+        <div className="flex mb-4">
+          <button 
+            className={`px-6 py-2 ${selectedTab === 'FOR SALE' ? 'bg-green-50 border-b-2 border-green-500' : 'bg-white'}`}
+            onClick={() => setSelectedTab('FOR SALE')}
+          >
+            FOR SALE
+          </button>
+          <button 
+            className={`px-6 py-2 ${selectedTab === 'FOR RENT' ? 'bg-green-50 border-b-2 border-green-500' : 'bg-white'}`}
+            onClick={() => setSelectedTab('FOR RENT')}
+          >
+            FOR RENT
+          </button>
+          <button 
+            className={`px-6 py-2 ${selectedTab === 'SOLD' ? 'bg-green-50 border-b-2 border-green-500' : 'bg-white'}`}
+            onClick={() => setSelectedTab('SOLD')}
+          >
+            SOLD
+          </button>
+        </div>
 
-        {/* 3. Key Benefits */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="rounded-full bg-[#5D913B]/10 w-20 h-20 mx-auto flex items-center justify-center mb-4">
-                  <span className="text-3xl text-[#5D913B]">🏡</span>
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-[#2D4939]">Eco-Friendly Living</h3>
-                <p className="text-gray-600">Find green homes and neighborhoods that reward your choices.</p>
+        <div className="flex flex-col md:flex-row gap-4">
+          <div className="flex-1 relative">
+            <Search className="absolute left-3 top-3 text-gray-500" size={18} />
+            <input 
+              type="text" 
+              placeholder="Region, city, street, telephone" 
+              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md"
+            />
+          </div>
+          <div className="flex gap-2">
+            <button className="bg-green-100 border border-green-300 px-4 py-2 rounded-md">All properties</button>
+            <button className="bg-white border border-gray-300 px-4 py-2 rounded-md">New properties</button>
+            <button className="bg-white border border-gray-300 px-4 py-2 rounded-md flex items-center">
+              Price <span className="ml-1">$</span>
+            </button>
+            <button className="bg-white border border-gray-300 px-4 py-2 rounded-md flex items-center">
+              Property Types <Filter size={16} className="ml-1" />
+            </button>
+            <button className="bg-white border border-gray-300 px-4 py-2 rounded-md flex items-center">
+              Filters <Filter size={16} className="ml-1" />
+            </button>
+            <button className="bg-green-500 text-white px-4 py-2 rounded-md flex items-center">
+              To research <Search size={16} className="ml-1" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Property types section */}
+      <section className="px-6 py-12">
+        <h2 className="text-2xl font-semibold mb-6">What style of home are you looking for?</h2>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <a href="#" className="flex items-center justify-between border border-gray-200 rounded-lg p-4 hover:shadow-md">
+            <div className="flex items-center">
+              <div className="mr-3 bg-gray-100 p-2 rounded-full">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
               </div>
-              <div className="text-center">
-                <div className="rounded-full bg-[#5D913B]/10 w-20 h-20 mx-auto flex items-center justify-center mb-4">
-                  <span className="text-3xl text-[#5D913B]">🎯</span>
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-[#2D4939]">Challenges with Rewards</h3>
-                <p className="text-gray-600">Track steps, eco-actions, and earn points toward rent or mortgage.</p>
+              <span>Single-family home</span>
+            </div>
+            <ChevronRight size={20} />
+          </a>
+          <a href="#" className="flex items-center justify-between border border-gray-200 rounded-lg p-4 hover:shadow-md">
+            <div className="flex items-center">
+              <div className="mr-3 bg-gray-100 p-2 rounded-full">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none">
+                  <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                </svg>
               </div>
-              <div className="text-center">
-                <div className="rounded-full bg-[#5D913B]/10 w-20 h-20 mx-auto flex items-center justify-center mb-4">
-                  <span className="text-3xl text-[#5D913B]">❤️</span>
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-[#2D4939]">Give Back with Impact</h3>
-                <p className="text-gray-600">Convert points to donations for local initiatives and NPOs.</p>
+              <span>Condo</span>
+            </div>
+            <ChevronRight size={20} />
+          </a>
+          <a href="#" className="flex items-center justify-between border border-gray-200 rounded-lg p-4 hover:shadow-md">
+            <div className="flex items-center">
+              <div className="mr-3 bg-gray-100 p-2 rounded-full">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+                </svg>
               </div>
+              <span>Cottage</span>
+            </div>
+            <ChevronRight size={20} />
+          </a>
+          <a href="#" className="flex items-center justify-between border border-gray-200 rounded-lg p-4 hover:shadow-md">
+            <div className="flex items-center">
+              <div className="mr-3 bg-gray-100 p-2 rounded-full">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none">
+                  <rect x="3" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect>
+                  <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+              </div>
+              <span>Multiplex</span>
+            </div>
+            <ChevronRight size={20} />
+          </a>
+        </div>
+      </section>
+
+   {/* Commission-free section */}
+<section className="px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-12">
+  
+  {/* Left Image Section */}
+  <div className="rounded-lg overflow-hidden h-80 md:h-auto">
+    <div 
+      className="h-full w-full bg-cover bg-center relative" 
+      style={{ backgroundImage: "url('/about.jpg')" }}
+    >
+      <div className="absolute inset-0 flex items-center justify-center p-12">
+        <div className="bg-green-500 text-white p-6 rounded-lg relative">
+          <div className="absolute top-0 right-0 bg-red-500 text-white px-3 py-1 -translate-y-1/2 rounded-md">
+            SOLD!
+          </div>
+          <p className="text-xl font-bold">FOR SALE</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Right Text Section */}
+  <div className="flex flex-col justify-center">
+    <h2 className="text-3xl font-bold mb-6">
+      Selling your property without an intermediary with the help of our team pays off!
+    </h2>
+    <p className="mb-4">
+      Our mission is to provide commission-free sales in your best interests.
+    </p>
+    <p className="mb-6">
+      Our professional team, which includes appraisers, real estate coaches, and notaries, will guide you toward a successful real estate transaction without an intermediary.
+    </p>
+    <p className="mb-6">
+      Discover all the benefits of doing business with Piscal+.
+    </p>
+    <button className="bg-black text-white px-6 py-3 rounded-full w-fit">Learn more</button>
+  </div>
+
+</section>
+
+
+      {/* Stats section */}
+      <section className="bg-green-100 px-6 py-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div>
+            <p className="text-4xl font-bold mb-2">27</p>
+            <p className="text-gray-700">years at your service</p>
+          </div>
+          <div>
+            <p className="text-4xl font-bold mb-2">3.7 billion</p>
+            <p className="text-gray-700">dollars in savings achieved</p>
+          </div>
+          <div>
+            <p className="text-4xl font-bold mb-2">92%</p>
+            <p className="text-gray-700">of our customers would do business with Piscal+ again</p>
+          </div>
+          <div>
+            <p className="text-4xl font-bold mb-2">8.6 out of 10</p>
+            <p className="text-gray-700">overall rating according to Protégez-Vous</p>
+          </div>
+        </div>
+      </section>
+
+     {/* Services section */}
+<section className="px-6 py-12">
+  <h2 className="text-3xl font-bold text-center mb-12">Piscal+, we are here for you</h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+  
+    {/* Card 1 */}
+    <div className="border border-gray-200 rounded-lg overflow-hidden">
+      <div className="h-48 bg-cover bg-center" style={{ backgroundImage: "url('/home1.jpg')" }}></div>
+      <div className="p-6">
+        <h3 className="text-xl font-bold mb-4">Sale of property</h3>
+        <p className="text-gray-700">For your sale project without a broker, benefit from the expertise of our real estate team.</p>
+      </div>
+    </div>
+
+    {/* Card 2 */}
+    <div className="border border-gray-200 rounded-lg overflow-hidden">
+      <div className="h-48 bg-cover bg-center" style={{ backgroundImage: "url('/home2.jpg')" }}></div>
+      <div className="p-6">
+        <h3 className="text-xl font-bold mb-4">Property rental</h3>
+        <p className="text-gray-700">Advertise your property for rent using the tools at your disposal to showcase it in a professional manner.</p>
+      </div>
+    </div>
+
+    {/* Card 3 */}
+    <div className="border border-gray-200 rounded-lg overflow-hidden">
+      <div className="h-48 bg-cover bg-center" style={{ backgroundImage: "url('/home3.jpg')" }}></div>
+      <div className="p-6">
+        <h3 className="text-xl font-bold mb-4">Real Estate Business Services</h3>
+        <p className="text-gray-700">Our tailored solutions for builders, property developers, and real estate companies meet their unique needs.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+      <div className="bg-gray-50">
+ {/* Free explanatory videos section */}
+<section className="py-12 px-6 bg-amber-50 rounded-lg mx-6 my-12 flex flex-col md:flex-row gap-8 items-center">
+  
+  {/* Left Image Section */}
+  <div className="md:w-1/3 h-64 rounded-lg overflow-hidden">
+    <img 
+      src="/explanation.jpg" 
+      alt="Explanatory Video Preview" 
+      className="w-full h-full object-cover"
+    />
+  </div>
+
+  {/* Right Text Section */}
+  <div className="md:w-2/3">
+    <h2 className="text-3xl font-bold mb-4">Free explanatory videos</h2>
+    <p className="text-gray-700 mb-6">
+      Sign up to discover everything you can accomplish with Piscal+'s help, and learn more about 
+      commission-free selling.
+    </p>
+    <button className="border border-black px-8 py-2 rounded-full hover:bg-black hover:text-white transition-colors">
+      Register
+    </button>
+  </div>
+
+</section>
+
+
+    {/* Blog section */}
+<section className="py-12 px-6">
+  <h2 className="text-3xl font-bold mb-12 text-center">Our blog</h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    
+    {/* Blog Post 1 */}
+    <div className="bg-white rounded-lg overflow-hidden shadow-sm">
+      <div className="h-48">
+        <img 
+          src="/blog.jpg" 
+          alt="Green Homes" 
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="p-6">
+        <span className="text-xs text-gray-500 uppercase">ALL ABOUT THE SALE</span>
+        <h3 className="text-xl font-bold mt-2 mb-4">Green Homes: Tips and Advice for Eco-Friendly Renovations</h3>
+      </div>
+    </div>
+
+    {/* Blog Post 2 */}
+    <div className="bg-white rounded-lg overflow-hidden shadow-sm">
+      <div className="h-48">
+        <img 
+          src="/blog1.jpg" 
+          alt="House Expenses" 
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="p-6">
+        <span className="text-xs text-gray-500 uppercase">ALL ABOUT BUYING</span>
+        <h3 className="text-xl font-bold mt-2 mb-4">What expenses should I expect when buying a house?</h3>
+      </div>
+    </div>
+
+    {/* Blog Post 3 */}
+    <div className="bg-white rounded-lg overflow-hidden shadow-sm">
+      <div className="h-48">
+        <img 
+          src="/blog2.jpg" 
+          alt="Selling Documents" 
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="p-6">
+        <span className="text-xs text-gray-500 uppercase">ALL ABOUT THE SALE</span>
+        <h3 className="text-xl font-bold mt-2 mb-4">The 7 documents needed to sell a house</h3>
+      </div>
+    </div>
+
+  </div>
+
+  <div className="text-center mt-10">
+    <p className="mb-4">Check out Piscal+'s real estate guides and advice.</p>
+    <button className="border border-black px-8 py-2 rounded-full hover:bg-black hover:text-white transition-colors">
+      All articles
+    </button>
+  </div>
+</section>
+
+
+      {/* Partners section */}
+      <section className="py-12 px-6 bg-white">
+        <h2 className="text-3xl font-bold mb-4 text-center">Partners who listen and are at your service</h2>
+        <p className="text-center mb-12 max-w-3xl mx-auto">
+          From renovations to buying or selling a house, we are by your side from start to finish to bring your dreams and real estate projects to fruition.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+          <div className="flex gap-6 items-start">
+            <div className="flex-shrink-0">
+              <div className="w-12 h-12 flex items-center">
+                <div className="text-orange-500 font-bold text-2xl">R</div>
+                <div className="text-green-900 font-bold text-2xl">A</div>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold mb-4">Need to renovate?</h3>
+              <p className="text-gray-700 mb-4">
+                Whether you're looking for quick or major renovations, residential or commercial, 
+                RénoAssistance is here to help. Trust our Verified Contractors and an experienced 
+                team to ensure your renovations are a success.
+              </p>
+              <a href="#" className="text-green-700 font-semibold hover:underline">Learn more</a>
             </div>
           </div>
-        </section>
 
-        {/* 4. Featured Properties */}
-        <section className="py-16 bg-gray-100">
-          <div className="container mx-auto px-6">
-            <h2 className="text-3xl font-bold text-[#2D4939] mb-8 text-center">Explore Featured Properties</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Property Card 1 */}
-              <div className="bg-white rounded-lg overflow-hidden shadow-md">
-                <div className="relative h-48">
-                  <Image 
-                    src="/home1.jpg" 
-                    alt="Modern eco-friendly house" 
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                  <div className="absolute top-4 right-4 bg-green-500 text-white px-2 py-1 rounded-full text-xs">
-                    Eco-friendly
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex justify-between items-center mb-2">
-                    <h3 className="text-xl font-bold">$425,000</h3>
-                    <span className="text-gray-600 text-sm">Portland, OR</span>
-                  </div>
-                  <div className="flex items-center text-gray-600 mb-4">
-                    <span className="mr-3">3 beds</span>
-                    <span>2 baths</span>
-                  </div>
-                  <button className="w-full bg-[#E37019] text-white py-2 rounded hover:bg-orange-600 transition">
-                    View Listing
-                  </button>
-                </div>
-              </div>
-
-              {/* Property Card 2 */}
-              <div className="bg-white rounded-lg overflow-hidden shadow-md">
-                <div className="relative h-48">
-                  <Image 
-                    src="/home2.jpg" 
-                    alt="Suburban eco home" 
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                  <div className="absolute top-4 right-4 bg-[#5D913B] text-white px-2 py-1 rounded-full text-xs">
-                    Challenge-friendly
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex justify-between items-center mb-2">
-                    <h3 className="text-xl font-bold">$375,000</h3>
-                    <span className="text-gray-600 text-sm">Austin, TX</span>
-                  </div>
-                  <div className="flex items-center text-gray-600 mb-4">
-                    <span className="mr-3">2 beds</span>
-                    <span>2 baths</span>
-                  </div>
-                  <button className="w-full bg-[#E37019] text-white py-2 rounded hover:bg-orange-600 transition">
-                    View Listing
-                  </button>
-                </div>
-              </div>
-
-              {/* Property Card 3 */}
-              <div className="bg-white rounded-lg overflow-hidden shadow-md">
-                <div className="relative h-48">
-                  <Image 
-                    src="/home3.jpg" 
-                    alt="Urban apartment with green features" 
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                  <div className="absolute top-4 right-4 bg-green-500 text-white px-2 py-1 rounded-full text-xs">
-                    Eco-friendly
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex justify-between items-center mb-2">
-                    <h3 className="text-xl font-bold">$299,000</h3>
-                    <span className="text-gray-600 text-sm">Chicago, IL</span>
-                  </div>
-                  <div className="flex items-center text-gray-600 mb-4">
-                    <span className="mr-3">1 bed</span>
-                    <span>1 bath</span>
-                  </div>
-                  <button className="w-full bg-[#E37019] text-white py-2 rounded hover:bg-orange-600 transition">
-                    View Listing
-                  </button>
-                </div>
+          <div className="flex gap-6 items-start">
+            <div className="flex-shrink-0">
+              <div className="w-12 h-12 flex items-center">
+                <div className="text-green-900 font-bold text-2xl">EP</div>
               </div>
             </div>
-            <div className="text-center mt-8">
-              <button className="bg-white border border-[#2D4939] text-[#2D4939] px-6 py-2 rounded-full hover:bg-[#2D4939] hover:text-white transition">
-                View All Properties
-              </button>
+            <div>
+              <h3 className="text-2xl font-bold mb-4">Our real estate ecosystem</h3>
+              <p className="text-gray-700 mb-4">
+                EspaceProprio is a Desjardins initiative that brings together a group of companies 
+                offering support services in the areas of housing, buying and selling real estate, 
+                including renovation, construction and maintenance of your living space.
+              </p>
+              <a href="#" className="text-green-700 font-semibold hover:underline">Learn more</a>
             </div>
           </div>
-        </section>
+        </div>
 
-        {/* 5. Active Challenges */}
-        <section className="py-16 bg-orange-50">
-          <div className="container mx-auto px-6">
-            <h2 className="text-3xl font-bold text-[#2D4939] mb-8 text-center">Join a Challenge, Earn Rewards</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Challenge Card 1 */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <div className="flex items-center justify-center mb-4">
-                  <span className="text-4xl">🎽</span>
-                </div>
-                <h3 className="text-xl font-bold text-center mb-2">Walk 10,000 steps today</h3>
-                <p className="text-gray-600 text-center mb-4">Track your steps and earn points for each milestone reached!</p>
-                <div className="bg-gray-100 h-2 rounded-full mb-2">
-                  <div className="bg-[#5D913B] h-2 rounded-full w-3/4"></div>
-                </div>
-                <p className="text-sm text-gray-600 text-center mb-4">7,500 steps completed</p>
-                <button className="w-full bg-[#5D913B] text-white py-2 rounded hover:bg-green-700 transition">
-                  Join Now
-                </button>
-              </div>
-
-              {/* Challenge Card 2 */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <div className="flex items-center justify-center mb-4">
-                  <span className="text-4xl">🚲</span>
-                </div>
-                <h3 className="text-xl font-bold text-center mb-2">Bike to work week</h3>
-                <p className="text-gray-600 text-center mb-4">Ditch the car! Earn 500 points for every commute by bicycle.</p>
-                <div className="bg-gray-100 h-2 rounded-full mb-2">
-                  <div className="bg-[#5D913B] h-2 rounded-full w-1/2"></div>
-                </div>
-                <p className="text-sm text-gray-600 text-center mb-4">2 days completed</p>
-                <button className="w-full bg-[#5D913B] text-white py-2 rounded hover:bg-green-700 transition">
-                  Join Now
-                </button>
-              </div>
-
-              {/* Challenge Card 3 */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <div className="flex items-center justify-center mb-4">
-                  <span className="text-4xl">♻️</span>
-                </div>
-                <h3 className="text-xl font-bold text-center mb-2">Recycling champion</h3>
-                <p className="text-gray-600 text-center mb-4">Log your recycling daily and compete for bonus points!</p>
-                <div className="text-sm text-center mb-2 text-[#E37019] font-bold">
-                  Starts in 2 days
-                </div>
-                <p className="text-sm text-gray-600 text-center mb-4">235 participants registered</p>
-                <button className="w-full bg-[#5D913B] text-white py-2 rounded hover:bg-green-700 transition">
-                  Join Now
-                </button>
-              </div>
+        <div className="border border-gray-200 rounded-lg p-6 flex gap-6 items-center">
+          <div className="flex-shrink-0">
+            <div className="w-12 h-12 bg-green-500 rounded-md flex items-center justify-center">
+              <div className="text-white font-bold text-2xl">D</div>
             </div>
           </div>
-        </section>
-
-        {/* 6. Points & Rewards Marketplace */}
-        <section className="py-16 bg-[#F7F7F7]">
-          <div className="container mx-auto px-6">
-            <h2 className="text-3xl font-bold text-[#2D4939] mb-8 text-center">Spend Your Points</h2>
-            
-            <div className="flex justify-center mb-8">
-              <div className="inline-flex rounded-md shadow-sm" role="group">
-                <button className="py-2 px-4 bg-[#2D4939] text-white rounded-l-lg">💸 Cashback</button>
-                <button className="py-2 px-4 bg-white text-[#2D4939]">🎁 Gifts</button>
-                <button className="py-2 px-4 bg-white text-[#2D4939]">🎟 Subscriptions</button>
-                <button className="py-2 px-4 bg-white text-[#2D4939] rounded-r-lg">💚 Donations</button>
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {/* Reward Card 1 */}
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                <div className="relative h-40">
-                  <Image 
-                    src="/cash1.jpg" 
-                    alt="Cashback reward" 
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="font-bold mb-2">$50 Property Credit</h3>
-                  <div className="flex justify-between items-center">
-                    <span className="text-[#5D913B] font-bold">2,500 points</span>
-                    <button className="bg-[#E37019] text-white px-4 py-1 rounded text-sm">Redeem</button>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Reward Card 2 */}
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                <div className="relative h-40">
-                  <Image 
-                    src="/cash2.jpg" 
-                    alt="Cashback reward" 
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="font-bold mb-2">$100 Property Credit</h3>
-                  <div className="flex justify-between items-center">
-                    <span className="text-[#5D913B] font-bold">5,000 points</span>
-                    <button className="bg-[#E37019] text-white px-4 py-1 rounded text-sm">Redeem</button>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Reward Card 3 */}
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                <div className="relative h-40">
-                  <Image 
-                    src="/cash3.jpg" 
-                    alt="Cashback reward" 
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="font-bold mb-2">$200 Property Credit</h3>
-                  <div className="flex justify-between items-center">
-                    <span className="text-[#5D913B] font-bold">10,000 points</span>
-                    <button className="bg-[#E37019] text-white px-4 py-1 rounded text-sm">Redeem</button>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Reward Card 4 */}
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                <div className="relative h-40">
-                  <Image 
-                    src="/cash1.jpg" 
-                    alt="Cashback reward" 
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="font-bold mb-2">$500 Property Credit</h3>
-                  <div className="flex justify-between items-center">
-                    <span className="text-[#5D913B] font-bold">25,000 points</span>
-                    <button className="bg-[#E37019] text-white px-4 py-1 rounded text-sm">Redeem</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div>
+            <h3 className="text-2xl font-bold mb-2">We've been doing this for a long time, and that's - it's reassuring.</h3>
+            <p className="text-gray-700">
+              Change to Desjardins and save up to $550 by combining your car and home insurance.
+            </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* 7. Donation & Eco Impact */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-6">
-            <h2 className="text-3xl font-bold text-[#2D4939] mb-8 text-center">Your Points Can Change Lives</h2>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="relative h-96">
-                <Image 
-                  src="/map.jpg" 
-                  alt="Map of Africa highlighting eco-NPOs" 
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </div>
-              
-              <div>
-                <div className="mb-8">
-                  <h3 className="text-xl font-bold mb-4 text-[#2D4939]">Our Impact Partners</h3>
-                  <div className="flex flex-wrap gap-4">
-                    <div className="bg-gray-100 p-3 rounded-lg w-24 h-12 flex items-center justify-center">NGO 1</div>
-                    <div className="bg-gray-100 p-3 rounded-lg w-24 h-12 flex items-center justify-center">NGO 2</div>
-                    <div className="bg-gray-100 p-3 rounded-lg w-24 h-12 flex items-center justify-center">NGO 3</div>
-                    <div className="bg-gray-100 p-3 rounded-lg w-24 h-12 flex items-center justify-center">NGO 4</div>
-                    <div className="bg-gray-100 p-3 rounded-lg w-24 h-12 flex items-center justify-center">NGO 5</div>
-                  </div>
-                </div>
-                
-                <div className="mb-8">
-                  <h3 className="text-xl font-bold mb-4 text-[#2D4939]">Total Impact</h3>
-                  <div className="grid grid-cols-3 gap-4 text-center">
-                    <div className="bg-[#EDF5EC] p-4 rounded-lg">
-                      <div className="text-3xl font-bold text-[#5D913B]">$125K</div>
-                      <div className="text-sm">Donated</div>
-                    </div>
-                    <div className="bg-[#EDF5EC] p-4 rounded-lg">
-                      <div className="text-3xl font-bold text-[#5D913B]">75</div>
-                      <div className="text-sm">Projects</div>
-                    </div>
-                    <div className="bg-[#EDF5EC] p-4 rounded-lg">
-                      <div className="text-3xl font-bold text-[#5D913B]">12K</div>
-                      <div className="text-sm">Participants</div>
-                    </div>
-                  </div>
-                </div>
-                
-                <button className="bg-[#E37019] text-white px-8 py-3 rounded-lg hover:bg-orange-600 transition flex items-center justify-center">
-                  Donate My Points
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 8. Testimonials */}
-        <section className="py-16 bg-[#EDF5EC]">
-          <div className="container mx-auto px-6">
-            <h2 className="text-3xl font-bold text-[#2D4939] mb-8 text-center">What Our Users Are Saying</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Testimonial 1 */}
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <div className="flex items-center mb-4">
-                  <img src='https://i.pravatar.cc/150?img=5' className="w-12 h-12 bg-gray-300 rounded-full mr-4"></img>
-                  <div>
-                    <h4 className="font-bold">Sarah Johnson</h4>
-                    <p className="text-sm text-gray-600">Canada</p>
-                  </div>
-                </div>
-                <div className="flex text-yellow-400 mb-2">
-                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                </div>
-                <p className="text-gray-600">"I never thought my daily walks would help me save for a house! I've earned over $1,200 in property credits in just 6 months."</p>
-              </div>
-              
-              {/* Testimonial 2 */}
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <div className="flex items-center mb-4">
-                <img src='https://i.pravatar.cc/150?img=3' className="w-12 h-12 bg-gray-300 rounded-full mr-4"></img>
-                <div>
-                    <h4 className="font-bold">Michael Chen</h4>
-                    <p className="text-sm text-gray-600">United States</p>
-                  </div>
-                </div>
-                <div className="flex text-yellow-400 mb-2">
-                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                </div>
-                <p className="text-gray-600">"The challenge system makes sustainability fun. My kids love tracking our family recycling efforts and watching the points add up."</p>
-              </div>
-              
-              {/* Testimonial 3 */}
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <div className="flex items-center mb-4">
-                <img src='https://i.pravatar.cc/150?img5' className="w-12 h-12 bg-gray-300 rounded-full mr-4"></img>
-                <div>
-                    <h4 className="font-bold">Priya Patel</h4>
-                    <p className="text-sm text-gray-600">United Kingdom</p>
-                  </div>
-                </div>
-                <div className="flex text-yellow-400 mb-2">
-                  <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
-                </div>
-                <p className="text-gray-600">"Donating my points to help build eco-schools in Africa gives me so much joy. Thank you Piscal+ for connecting us to these opportunities."</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 9. Mobile App Promotion */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl font-bold text-[#2D4939] mb-4">Track. Earn. Win. Anywhere.</h2>
-                <p className="text-gray-600 mb-8">Download our app and sync with your watch or phone to earn real rewards for daily action.</p>
-                <div className="flex space-x-4">
-                  <button className="bg-black text-white px-6 py-2 rounded-lg flex items-center">
-                    <FaApple className="mr-2" /> App Store
-                  </button>
-                  <button className="bg-black text-white px-6 py-2 rounded-lg flex items-center">
-                    <FaGooglePlay className="mr-2" /> Google Play
-                  </button>
-                </div>
-              </div>
-              <div className="relative h-96">
-                <Image 
-                  src="/images/mobile-app.png" 
-                  alt="Piscal+ mobile app interface" 
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 10. Newsletter */}
-        <section className="py-12 bg-[#5D913B]">
-          <div className="container mx-auto px-6">
-            <div className="max-w-xl mx-auto text-center">
-              <h2 className="text-2xl font-bold text-white mb-4">Stay in the Loop</h2>
-              <p className="text-gray-100 mb-6">Get updates on new properties, challenges, and eco-initiatives.</p>
-              <div className="flex">
-                <input 
-                  type="email" 
-                  placeholder="Your email address" 
-                  className="flex-grow px-4 py-3 rounded-l focus:outline-none"
-                />
-                <button className="bg-[#2D4939] text-white px-6 py-3 rounded-r hover:bg-green-900 transition">
-                  Subscribe
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-
-                </div>
-              
+ 
+    </div>
+    </div>
   );
 }

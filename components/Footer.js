@@ -1,55 +1,163 @@
 "use client"
-
-import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
+import { useState } from 'react';
+import { Search, Filter, ChevronRight ,Facebook, Instagram, Twitter, Linkedin, Youtube, Music } from 'lucide-react';
+import { FaPinterest } from 'react-icons/fa'; // Font Awesome Pinterest icon
 
 const Footer = () => {
   return (
     <div>
-      {/* 11. Footer */}
-      <footer className="bg-[#2D4939] text-white py-12">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+         {/* Stats & Footer section */}
+         <section className="bg-gray-100 py-12 px-6">
+        <div className="max-w-6xl mx-auto">
+          <ol className="list-decimal pl-6 space-y-4 mb-12">
+            <li className="text-sm text-gray-600">
+              Total savings made by sellers who have sold on piscal-plus.com since our inception, based on an average commission of 5%, including applicable taxes. As of November 21, 2022.
+            </li>
+            <li className="text-sm text-gray-600">
+              According to a study on the sales experience of 521 customers who sold with Piscal+, conducted via a web survey by Ad Hoc Research, 2022.
+            </li>
+            <li className="text-sm text-gray-600">
+              Most appreciated service by customers (8.6 out of 10 overall rating) among all banners according to Protégez-Vous in 2023, according to a survey carried out with 620 respondents.
+            </li>
+          </ol>
+
+          <hr className="border-gray-300 mb-12" />
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             <div>
-              <h3 className="text-xl font-bold mb-4">🌍 About Piscal+</h3>
-              <p className="text-gray-300">Making eco-friendly living rewarding, accessible, and impactful for everyone.</p>
+              <div className="flex items-center mb-8">
+                <div className="relative">
+                  <div className="w-6 h-6 bg-orange-500 rotate-45 absolute -top-3"></div>
+                  <div className="w-6 h-6 rounded-md border-2 border-white bg-white relative z-10 flex items-center justify-center">
+                    <div className="grid grid-cols-2 gap-0.5">
+                      <div className="w-1 h-1 bg-green-600 rounded-sm"></div>
+                      <div className="w-1 h-1 bg-green-600 rounded-sm"></div>
+                      <div className="w-1 h-1 bg-green-600 rounded-sm"></div>
+                      <div className="w-1 h-1 bg-green-600 rounded-sm"></div>
+                    </div>
+                  </div>
+                </div>
+                <span className="text-xl font-bold text-green-900 ml-2">Piscal<span className="text-orange-500">+</span></span>
+              </div>
             </div>
+            
             <div>
-              <h3 className="text-xl font-bold mb-4">🏠 Explore</h3>
-              <ul className="space-y-2 text-gray-300">
-                <li><a href="#" className="hover:text-white">Properties</a></li>
-                <li><a href="#" className="hover:text-white">Challenges</a></li>
-                <li><a href="#" className="hover:text-white">Rewards</a></li>
-                <li><a href="#" className="hover:text-white">Donate</a></li>
+              <h3 className="font-bold mb-4 uppercase">Selling a property</h3>
+              <ul className="space-y-3">
+                <li><a href="#" className="text-gray-600 hover:text-green-800">How does it work?</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-green-800">Rates</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-green-800">Payment options</a></li>
+              </ul>
+              
+              <h3 className="font-bold mt-8 mb-4 uppercase">Buying a property</h3>
+              <ul className="space-y-3">
+                <li><a href="#" className="text-gray-600 hover:text-green-800">Why buy on Piscal+.com?</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-green-800">How does it work?</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-green-800">Tools for searching for a property</a></li>
+              </ul>
+              
+              <h3 className="font-bold mt-8 mb-4 uppercase">Rent a property</h3>
+              <ul className="space-y-3">
+                <li><a href="#" className="text-gray-600 hover:text-green-800">Advertise for free</a></li>
               </ul>
             </div>
+            
             <div>
-              <h3 className="text-xl font-bold mb-4">📱 Follow Us</h3>
-              <div className="flex space-x-4">
-                {/* LinkedIn SVG */}
-                <a href="#" className="hover:text-gray-300" aria-label="LinkedIn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zM8.5 8h3.6v2.1h.05c.5-.95 1.7-2.1 3.5-2.1 3.75 0 4.45 2.4 4.45 5.55V24h-4v-8.25c0-1.95-.05-4.45-2.7-4.45-2.7 0-3.1 2.1-3.1 4.3V24h-4V8z" />
+              <h3 className="font-bold mb-4 uppercase">Blog</h3>
+              <ul className="space-y-3">
+                <li><a href="#" className="text-gray-600 hover:text-green-800">All about the sale</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-green-800">All about buying</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-green-800">Real estate news</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-green-800">Homemade passion</a></li>
+              </ul>
+              
+              <h3 className="font-bold mt-8 mb-4 uppercase">About</h3>
+              <ul className="space-y-3">
+                <li><a href="#" className="text-gray-600 hover:text-green-800">FAQ</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-green-800">Career</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-green-800">Advertising on Piscal+.com</a></li>
+              </ul>
+              
+              <h3 className="font-bold mt-8 mb-4 uppercase">Partners</h3>
+              <ul className="space-y-3">
+                <li><a href="#" className="text-gray-600 hover:text-green-800">Home insurance</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-green-800">Car insurance</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-green-800">Mortgages</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-green-800">Renovation</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-bold mb-4 uppercase">Contact us</h3>
+              <div className="flex gap-4 mb-4">
+                <button className="flex items-center justify-center bg-white rounded-full p-3 border border-gray-300 hover:bg-gray-50">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                   </svg>
+                </button>
+                <button className="flex-1 bg-white rounded-full p-3 border border-gray-300 text-left hover:bg-gray-50">
+                  1-866-387-7677
+                </button>
+              </div>
+              <button className="w-full bg-white rounded-full p-3 border border-gray-300 mb-8 text-left hover:bg-gray-50">
+                E-mail
+              </button>
+              
+              <h3 className="font-bold mb-4 uppercase">Follow us</h3>
+              <div className="flex gap-2 mb-8">
+                <a href="#" className="bg-gray-200 p-2 rounded-full hover:bg-gray-300">
+                  <Facebook size={20} />
                 </a>
-                {/* Facebook SVG */}
-                <a href="#" className="hover:text-gray-300" aria-label="Facebook">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M22.675 0H1.326C.593 0 0 .593 0 1.326V22.67c0 .733.593 1.326 1.326 1.326H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.464.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.31h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.326V1.326C24 .593 23.406 0 22.675 0z" />
-                  </svg>
+                <a href="#" className="bg-gray-200 p-2 rounded-full hover:bg-gray-300">
+                  <Instagram size={20} />
                 </a>
-                {/* Instagram SVG */}
-                <a href="#" className="hover:text-gray-300" aria-label="Instagram">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.337 3.608 1.312.975.975 1.25 2.242 1.312 3.608.058 1.266.07 1.646.07 4.847s-.012 3.581-.07 4.847c-.062 1.366-.337 2.633-1.312 3.608-.975.975-2.242 1.25-3.608 1.312-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.337-3.608-1.312-.975-.975-1.25-2.242-1.312-3.608C2.175 15.628 2.163 15.248 2.163 12s.012-3.581.07-4.847c.062-1.366.337-2.633 1.312-3.608C4.52 2.5 5.787 2.225 7.153 2.163 8.419 2.105 8.8 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.77.13 4.602.396 3.6 1.398c-1.002 1.002-1.268 2.17-1.326 3.452C2.014 6.668 2 7.077 2 12c0 4.923.014 5.332.072 6.613.058 1.282.324 2.45 1.326 3.452 1.002 1.002 2.17 1.268 3.452 1.326C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.282-.058 2.45-.324 3.452-1.326 1.002-1.002 1.268-2.17 1.326-3.452.058-1.281.072-1.69.072-6.613 0-4.923-.014-5.332-.072-6.613-.058-1.282-.324-2.45-1.326-3.452-1.002-1.002-2.17-1.268-3.452-1.326C15.668.014 15.259 0 12 0zM12 5.838A6.162 6.162 0 0 0 5.838 12 6.162 6.162 0 0 0 12 18.162 6.162 6.162 0 0 0 18.162 12 6.162 6.162 0 0 0 12 5.838zm0 10.162A4 4 0 1 1 16 12a4.005 4.005 0 0 1-4 4zm6.406-11.845a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z" />
-                  </svg>
+                <a href="#" className="bg-gray-200 p-2 rounded-full hover:bg-gray-300">
+                  <Twitter size={20} />
+                </a>
+                <a href="#" className="bg-gray-200 p-2 rounded-full hover:bg-gray-300">
+                <FaPinterest size={24} />
+                </a>
+                <a href="#" className="bg-gray-200 p-2 rounded-full hover:bg-gray-300">
+                  <Linkedin size={20} />
+                </a>
+                <a href="#" className="bg-gray-200 p-2 rounded-full hover:bg-gray-300">
+                  <Youtube size={20} />
+                </a>
+                <a href="#" className="bg-gray-200 p-2 rounded-full hover:bg-gray-300">
+                  <Music size={20} />
+                </a>
+              </div>
+              
+              <h3 className="font-bold mb-4 uppercase">Download the app</h3>
+              <div className="space-y-2">
+                <a href="#" className="block w-full bg-black text-white p-2 rounded-lg hover:bg-gray-800">
+                  Download on the App Store
+                </a>
+                <a href="#" className="block w-full bg-black text-white p-2 rounded-lg hover:bg-gray-800">
+                  Get it on Google Play
                 </a>
               </div>
             </div>
           </div>
+          
+          <hr className="border-gray-300 mb-8" />
+          
+          <div className="text-sm text-gray-600 mb-4">
+            Copyright © 2025 Piscal+. All rights reserved.
+          </div>
+          
+          <div className="flex flex-wrap gap-6 text-sm">
+            <a href="#" className="text-gray-700 hover:underline">Website Usage Policy</a>
+            <a href="#" className="text-gray-700 hover:underline">Privacy Policy</a>
+            <a href="#" className="text-gray-700 hover:underline">Cookie Policy</a>
+          </div>
+          
+          <div className="mt-8 text-xs text-gray-500 space-y-2">
+            <p>The PISCAL+ trademark is owned by 4520094 Canada Inc., doing business as Piscal+.</p>
+            <p>The small house logo is a registered trademark of the Fédération des caisses Desjardins du Québec, used under license.</p>
+          </div>
         </div>
-      </footer>
+      </section>
     </div>
   );
 }
